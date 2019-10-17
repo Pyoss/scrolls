@@ -16,6 +16,7 @@ def get_character_data(chat_id):
     skills = dict(zip(sheet.col_values(3), sheet.col_values(4)))
     inventory = dict(zip(sheet.col_values(5), sheet.col_values(6)))
     spells = sheet.col_values(7)
-    character_data = {'main_stats': main_stats, 'name': main_stats['name'], 'skills': skills,
+    print(main_stats)
+    character_data = {'main_stats': main_stats, 'name': main_stats['Имя:'], 'skills': skills,
                       'inventory': inventory, 'spells': spells}
     return character_data
