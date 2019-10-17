@@ -1,5 +1,6 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from collections import OrderedDict
 
 
 def get_character_data(chat_id):
@@ -12,9 +13,9 @@ def get_character_data(chat_id):
     # Find a workbook by name and open the first sheet
     # Make sure you use the right name here.
     sheet = client.open(str(chat_id)).sheet1
-    main_stats = dict(zip(sheet.col_values(1), sheet.col_values(2)))
-    skills = dict(zip(sheet.col_values(3), sheet.col_values(4)))
-    inventory = dict(zip(sheet.col_values(5), sheet.col_values(6)))
+    main_stats = OrderedDict(zip(sheet.col_values(1), sheet.col_values(2)))
+    skills = OrderedDict(zip(sheet.col_values(3), sheet.col_values(4)))
+    inventory = OrderedDict(zip(sheet.col_values(5), sheet.col_values(6)))
     spells = sheet.col_values(7)
     print(main_stats)
     character_data = {'main_stats': main_stats, 'name': main_stats['Имя:'], 'skills': skills,
