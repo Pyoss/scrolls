@@ -5,13 +5,6 @@ import google_sheets_connection
 types = telebot.types
 bot = telebot.TeleBot('403672798:AAGhc7iqynRdjb7ddKwt8La79H8V3hgab8Q')
 
-
-x = '78.47.202.24:3128'
-telebot.apihelper.proxy = {
-'http': 'http://{}'.format(x),
-'https': 'http://{}'.format(x)
-}
-
 bot.send_message(197216910, 'старт')
 # Инлайн тимчата
 @bot.inline_handler(func=lambda query: len(query.query)>0)
