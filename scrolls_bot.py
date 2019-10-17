@@ -9,9 +9,9 @@ bot = telebot.TeleBot('403672798:AAGhc7iqynRdjb7ddKwt8La79H8V3hgab8Q')
 players_dict = {'Тайлор': 83697884, 'Паша': 248737196}
 
 bot.send_message(197216910, 'старт')
+
 @bot.inline_handler(func=lambda query:  len(query.query) < 1)
 def query_text(query):
-    try:
         stats_data = google_sheets_connection.get_character_data(query.from_user.id)
         stats = types.InlineQueryResultArticle(
             id='stats', title="Статы",
@@ -36,13 +36,6 @@ def query_text(query):
             input_message_content=types.InputTextMessageContent(
                 message_text=get_info('spells', stats_data)))
         bot.answer_inline_query(query.id, [stats, spells, skills, inventory])
-    except:
-        error = types.InlineQueryResultArticle(
-            id='error', title="Ошибка",
-            description='Персонаж не найден.',
-            input_message_content=types.InputTextMessageContent(
-                message_text='Ошибка!'))
-        bot.answer_inline_query(query.id, [error])
 
 
 @bot.inline_handler(func=lambda query:  len(query.query) > 1 and query.query in players_dict)
