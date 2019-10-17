@@ -6,13 +6,7 @@ types = telebot.types
 bot = telebot.TeleBot('403672798:AAGhc7iqynRdjb7ddKwt8La79H8V3hgab8Q')
 # Инлайн тимчата
 
-x = '78.47.202.24:3128'
-telebot.apihelper.proxy = {
-'http': 'http://{}'.format(x),
-'https': 'http://{}'.format(x)
-}
-
-players_dict = {'Тайлор': 83697884}
+players_dict = {'Тайлор': 83697884, 'Паша': 248737196}
 
 bot.send_message(197216910, 'старт')
 @bot.inline_handler(func=lambda query:  len(query.query) < 1)
