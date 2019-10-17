@@ -7,7 +7,8 @@ bot = telebot.TeleBot('403672798:AAGhc7iqynRdjb7ddKwt8La79H8V3hgab8Q')
 
 bot.send_message(197216910, 'старт')
 # Инлайн тимчата
-@bot.inline_handler(func=lambda query: len(query.query)>0)
+
+@bot.inline_handler(func=lambda query: True)
 def query_text(query):
     print(query)
     try:
