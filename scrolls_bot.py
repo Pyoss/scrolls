@@ -135,6 +135,10 @@ def switch(message):
         password = message.text.split(' ', 1)[1]
         characters_dict = pickle.load(open('passwords.pkl', 'rb'))
         for key, value in characters_dict.items():
+            if value['chat_id'] == message.from_user.id:
+                characters_dict[key]['chat_id'] = 0
+                break
+        for key, value in characters_dict.items():
             if value['password'] == password:
                 characters_dict[key]['chat_id'] = message.from_user.id
                 pickle.dump(characters_dict, open('passwords.pkl', 'wb'))
