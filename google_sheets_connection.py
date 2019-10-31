@@ -21,7 +21,6 @@ def get_character_data(google_doc_name):
     inventory = OrderedDict(zip(sheet.col_values(6), sheet.col_values(7)))
     spells = sheet.col_values(8)
     additional = OrderedDict(zip(sheet.col_values(9), sheet.col_values(10)))
-    print(main_stats)
     character_data = {'main_stats': main_stats, 'name': main_stats['Имя:'], 'skills': skills,
                       'inventory': inventory, 'spells': spells, 'additional': additional, 'traits': traits}
     return character_data
@@ -60,7 +59,7 @@ def new_character(character_name):
          'Убеждение (Хар):',
          'Уход за животными (Мдр):',
          ],
-        ['',
+        [' ',
          '-',
          '-',
          '-',
@@ -81,14 +80,14 @@ def new_character(character_name):
          ],
         ['Трейты ({}):'.format(character_name),
          ],
-        ['Инвентарь ({}):'.format(character_name),
+        ['Инвентарь ({}):'.format(character_name), 'Золото:'
          ],
-        [''],
+        ['', 0],
         ['Заклинания ({}):'.format(character_name)],
         ['Дополнительно ({}):'.format(character_name),
          'Класс брони:', 'Здоровье:'
          ],
-        ['', '', '', '', '', ''],
+        ['', '-', '-'],
     ]
     i = 1
     for column in columns:
