@@ -166,6 +166,7 @@ def get_info(text, stats_data):
         text = ''
         for item in stats_dict:
             text += '\n{}'.format(item)
+        return text
     elif text == 'traits':
         stats_dict = stats_data['traits']
         text = ''
