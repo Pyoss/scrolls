@@ -48,7 +48,7 @@ def query_text(query):
             description='Здоровье, броня и пр.',
             input_message_content=types.InputTextMessageContent(
                 message_text=get_info('additional', stats_data)))
-        bot.answer_inline_query(query.id, [stats, spells, skills, traits, inventory, additional])
+        bot.answer_inline_query(query.id, [stats, spells, skills, traits, inventory, additional], cache_time=10)
     except Exception as e:
         print(e)
         error = types.InlineQueryResultArticle(
