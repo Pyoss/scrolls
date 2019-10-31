@@ -123,7 +123,7 @@ def switch(message):
     character_name = message.text.split(' ', 1)[1]
     google_sheets_connection.new_character(character_name)
     characters_dict = pickle.load(open('passwords.pkl', 'rb'))
-    characters_dict[character_name] = {'password': str(random.randint(10000)), 'chat_id': 0}
+    characters_dict[character_name] = {'password': str(random.randint(0, 10000)), 'chat_id': 0}
 
 
 @bot.message_handler(commands=["connect"])
