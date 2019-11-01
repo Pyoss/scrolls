@@ -10,7 +10,7 @@ bot = telebot.TeleBot('403672798:AAGhc7iqynRdjb7ddKwt8La79H8V3hgab8Q')
 bot.send_message(197216910, 'старт')
 
 
-@bot.inline_handler(func=lambda query:  len(query.query) < 1)
+@bot.inline_handler(func=lambda query:  len(query.query) < 3)
 def query_text(query):
     try:
         characters_dict = pickle.load(open('passwords.pkl', 'rb'))
@@ -50,7 +50,7 @@ def query_text(query):
                 message_text=get_info('additional', stats_data)))
         bot.answer_inline_query(query.id, [stats, spells, skills, traits, inventory, additional], cache_time=10)
     except Exception as e:
-        print(e)
+        bot.send_message(197216910, e)
         error = types.InlineQueryResultArticle(
             id='error', title="Ошибка",
             description='Персонаж не найден.',
@@ -59,9 +59,7 @@ def query_text(query):
         bot.answer_inline_query(query.id, [error])
 
 
-@bot.inline_handler(func=lambda query:  len(query.query) > 1
-                                        and query.query in [value['password'] for key, value
-                                                            in pickle.load(open('passwords.pkl')).items()])
+@bot.inline_handler(func=lambda query:  len(query.query) > 3)
 def query_text(query):
     try:
         characters_dict = pickle.load(open('passwords.pkl', 'rb'))
@@ -100,7 +98,8 @@ def query_text(query):
             input_message_content=types.InputTextMessageContent(
                 message_text=get_info('additional', stats_data)))
         bot.answer_inline_query(query.id, [stats, spells, skills, traits, inventory, additional])
-    except:
+    except Exception as e:
+        bot.send_message(197216910, repr(e))
         error = types.InlineQueryResultArticle(
             id='error', title="Ошибка",
             description='Персонаж не найден.',
