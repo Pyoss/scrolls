@@ -50,7 +50,7 @@ def query_text(query):
                 message_text=get_info('additional', stats_data)))
         bot.answer_inline_query(query.id, [stats, spells, skills, traits, inventory, additional], cache_time=10)
     except Exception as e:
-        bot.send_message(197216910, e)
+        bot.send_message(197216910, repr(e))
         error = types.InlineQueryResultArticle(
             id='error', title="Ошибка",
             description='Персонаж не найден.',
