@@ -40,7 +40,7 @@ def query_text(query):
                 message_text=get_info('spells', stats_data)))
         traits = types.InlineQueryResultArticle(
             id='traits', title="Трейты и умения",
-            description='Доступные заклинания',
+            description='Полученные трейты',
             input_message_content=types.InputTextMessageContent(
                 message_text=get_info('traits', stats_data)))
         additional = types.InlineQueryResultArticle(
@@ -91,7 +91,7 @@ def query_text(query):
             id='traits', title="Трейты",
             description='Трейты и умения',
             input_message_content=types.InputTextMessageContent(
-                message_text=get_info('spells', stats_data)))
+                message_text=get_info('traits', stats_data)))
         additional = types.InlineQueryResultArticle(
             id='additional', title="Дополнительно",
             description='Здоровье, броня и пр.',
