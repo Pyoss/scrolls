@@ -10,7 +10,7 @@ bot = telebot.TeleBot('403672798:AAGhc7iqynRdjb7ddKwt8La79H8V3hgab8Q')
 bot.send_message(197216910, 'старт')
 
 
-@bot.inline_handler(func=lambda query:  len(query.query) < 3)
+@bot.inline_handler(func=lambda query:  len(query.query) < 3 or query.query is None)
 def query_text(query):
     try:
         characters_dict = pickle.load(open('passwords.pkl', 'rb'))
